@@ -1,0 +1,113 @@
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../img/Kiwi_Actinidia_deliciosa.jpeg");
+    background-repeat: repeat; /* Hace que la imagen de fondo se repita */
+}
+main {
+    margin: auto;
+    width: 80%; /* Set the width to 80% of the parent container */
+    background-color: white;
+    border: 15px solid black; /* Define ancho, estilo y color del borde */
+
+}
+h1.title {
+    text-align: center;
+    color: white;
+    background-color: aqua;
+    padding: 14px 16px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+main div {
+    height: 200px;
+    width: 300px;
+    margin: auto;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.caja1 {
+    background-color: red;
+    border: 2px solid green; /* Define ancho, estilo y color del borde */
+}
+
+.caja2 {
+    background-color: blue;
+    border: 2px solid yellow; /* Define ancho, estilo y color del borde */
+}
+/* Elimina el estilo por defecto de la lista */
+nav{
+    background-color: black ;
+
+
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+ul a{
+    text-decoration: none;
+
+}
+
+/* Hace que los elementos de la lista se coloquen horizontalmente */
+li {
+    float: left;
+}
+
+/* Marca de forma distinta el primer enlace */
+li:first-child a {
+    background-color: green;
+}
+
+/* Aplica el efecto hover sobre los elementos */
+li a:hover {
+    background-color: #111;
+}
+
+/* Hace flotar a la derecha el último enlace */
+li:last-child {
+    float: right;
+}
+
+/* Estilos para los enlaces */
+a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+}
+/* mODIFICAR H */
+h1{
+    color: white;
+    border-radius: 5px;
+    padding: 14px 16px;
+    background-color: blue;
+}
+h2{
+    color: blue;
+}
+h3{
+
+    text-decoration: underline;
+}
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
+section{
+    background: linear-gradient(to bottom, #ccc, #ddd);
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px; 
+    margin: 10px 10px 10px 10px;  
+}
