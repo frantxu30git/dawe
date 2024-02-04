@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    margin-bottom: 5%;
+    background-image: url('../../img/patatas.jpg');
+    background-repeat: repeat;
+}
+
+/* Header */
+header {
+    width: 80%;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+}
+
+header h1 {
+    font-size: 2em;
+    color: white;
+}
+
+header h1:hover {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.5s;
+}
+
+header nav ul li a:hover {
+    background: linear-gradient(to right, #feb47b, #ff7e5f);
+}
+
+header nav ul li:first-child a:hover {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: black;
+}
+/* fin del header */
+/*apartado 3 */
+.apartado3 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    background-color: gray;
+    padding: 15px;
+    border: 5px blue solid
+}
+aside{
+   
+
+}
+main{
+    width: 75%
+}
+/*apartado 4 */
+aside ul {
+    list-style: none;
+    max-width: 200px; /* Cambia esto al valor que necesites */
+    max-height: 400px; /* Cambia esto al valor que necesites */
+    overflow: auto; /* Esto hará que aparezcan barras de desplazamiento si el contenido supera el tamaño máximo */
+}
+
+aside ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 10px;
+    background-color: #feb47b;
+    transition: background-color 0.5s;
+}
+
+aside ul li a:hover {
+    background-color: #ff7e5f;
+}
+/*apartado 5 */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #feb47b;
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+footer nav ul li {
+    margin: 0 10px;
+}
+
+footer nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+footer nav ul li a:hover {
+    text-decoration: underline;
+}
+/*apartado 6 */
+
+/*apartado opcional */
+aside img {
+    max-width: 200px; /* Cambia esto al valor que necesites */
+    max-height: 400px; /* Cambia esto al valor que necesites */
+    padding-left:40px;
+}
