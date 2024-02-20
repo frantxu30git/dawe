@@ -3,7 +3,7 @@ import { listaNombresProductos } from './tienda.js';
 window.onload = () => {
     function imprimirProductoHTML(producto) {
         return `
-            <div style="border: 1px solid black; margin-bottom: 10px;">
+            <div class="producto" style="border: 1px solid black; margin-bottom: 10px;">
                 <div style="font-weight: bold;">${producto.getNombre()}</div>
                 <span style="font-weight: bold;">Precio:</span> ${producto.getPrecio()}€
             </div>

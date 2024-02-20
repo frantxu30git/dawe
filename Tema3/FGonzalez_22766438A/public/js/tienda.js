@@ -4,6 +4,12 @@ import { Smartphone } from "./smartphone.js";
 const productos = [
     new Ropa("Chaqueta", 30, "M"),
     new Ropa("Pantalón", 40, "L"),
+    new Ropa("Camiseta", 20, "S"),
+    new Ropa("Jersey", 50, "XL"),
+    new Ropa("Vestido", 60, "M"),
+    new Ropa("Falda", 45, "S"),
+    new Ropa("Calcetines", 5, "M"),
+    new Ropa("Zapatos", 80, "L"),
     new Hogar("Lámpara", 50, "Habitación"),
     new Hogar("Mesa", 460, "Cocina"),
     new Smartphone("IPhone 15 pro Max", 1499, "Apple"),
