@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+}
+
+.tienda {
+    flex: 0 0 100%; /* La tienda ocupa el 80% de la pantalla */
+    display: flex;
+    flex-direction: column;
+}
+
+.carrito {
+    visibility: hidden;
+    flex: 0 0 20%; /* El carrito ocupa el 20% de la pantalla */
+    background-color: #333;
+    
+}
+
+/* Resto del CSS permanece igual */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: crimson;
+}
+
+.column {
+    flex: 1;
+    margin: 0 10px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ddd;
+    overflow: auto;
+    height: fit-content;
+    max-height: 1000px;
+}
+
+h2 {
+    text-align: center;
+}
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+#cart {
+    background-color: crimson;
+}
+.producto {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    background-color: #f4f4f4;
+}
+
+.nombre {
+    font-weight: bold;
+    color: crimson;
+}
+
+.precio, .cantidad {
+    font-weight: bold;
+}
+
+#carrito2 {
+    margin: 20px;
+}
