@@ -13,23 +13,23 @@ body {
 }
 
 .tienda {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
 
 .carrito {
+    /*hace fijo el carrito y lo pone a la derecha*/
+
+    position: fixed;
+    right: 0;
     flex: 1;
     visibility: hidden;
-    width: 20%;
-    background-color: #333;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-bottom: 15px;
-    overflow-y: visible; /* Cambia "auto" a "visible" */
-    scrollbar-width: thin;
-    scrollbar-color: yellow 3;
+    width: 15%;
+    /*separa de la derecha el carrito*/
+    margin-right: 2.5%;
     height: 100%;
+    background-color: #333;
 }
 
 
@@ -89,11 +89,23 @@ footer {
     font-weight: bold;
 }
 
-#carrito2 {
+#productosEnCarrito {
     margin: 20px;
-
+    height: 60%;
+    /*añade un scroll que esta siempre visible*/
+    overflow-y: scroll;
+    
 }
-.finCompra {
-    /* Tu código existente aquí... */
-    margin: 10px auto; /* Agrega margen y establece el margen horizontal a "auto" para centrar horizontalmente */
+#fincompradiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.finCompra{
+    background-color: crimson;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
 }

@@ -3,7 +3,9 @@ import { listaNombresProductos } from './tienda.js';
 
 window.onload = () => {
     function annadirProducto(nombreProducto, cantidad, precioTotal) {
-        let carrito = document.getElementById('carrito2');
+        //si se encuentra el boton <button class="finCompra">Finalizar Compra</button> no se añade el boton. Si no existe se añade
+        let botonFinCompra = document.querySelector('.finCompra');
+        let carrito = document.getElementById('productosEnCarrito');
         let productosEnCarrito = carrito.querySelectorAll('.producto');
         let productoExistente = Array.from(productosEnCarrito).find(producto => producto.querySelector('.nombre').textContent === nombreProducto);
     
@@ -20,14 +22,17 @@ window.onload = () => {
                 productoExistente.querySelector('.precio').textContent = 'Precio: ' + precioTotalExistente.toFixed(2) + '€';
             }
         } else {
+            console.log('Producto no existente');
             let productoHTML = `
                 <div class="producto">
                     <div class="nombre">${nombreProducto}</div>
                     <span class="cantidad">Cantidad: ${cantidad}</span>
+                    <br>
                     <span class="precio">Precio: ${precioTotal.toFixed(2)}€</span>
                 </div>
             `;
             carrito.innerHTML += productoHTML;
+
         }
     }
     
@@ -79,16 +84,19 @@ window.onload = () => {
        //aumenta el ancho del carrito
        
        carrito.addEventListener('mouseenter',function(){
-           carrito.style.marginLeft = '0px';
-           carrito.style.flex = '0 0 20%';
-           let carrito2 = document.getElementById('carrito2');
-           let productosEnCarrito = carrito2.querySelectorAll('.producto');
-           
+           //cambia el margin rigt para que se vea el carrito
+            tienda.style.width = "80%";
+            carrito.style.marginRight = '0%';
+            carrito.style.width = "20%";
+            console.log('Entra');
+            let productosEnCarrito = document.getElementById('productosEnCarrito');
+            let productosEnCarrito2 = productosEnCarrito.querySelectorAll('.producto');
+            
            // Agrega eventos de mouseover y mouseout a cada producto en el carrito
-           productosEnCarrito.forEach(producto => {
+           productosEnCarrito2.forEach(producto => {
                // Agrega un evento de mouseover para cambiar el estilo cuando el cursor está sobre el producto
                producto.addEventListener('mouseover', function() {
-                   console.log('Entra');
+                  
                    this.style.backgroundColor = 'lightgray'; // Cambia el color de fondo del producto
                });
    
@@ -101,8 +109,10 @@ window.onload = () => {
        });
 
         carrito.addEventListener('mouseleave',function(){
-            carrito.style.marginLeft = '1%';
-           carrito.style.flex = '0 0 18%';
+            //cambia el margin rigt para que se oculte el carrito
+            carrito.style.marginRight = '2.5%';
+            carrito.style.width = "15%";
+            
           
         });
         
