@@ -1,22 +1,37 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    
+}
+
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    overflow-y: auto;
     display: flex;
+    flex-direction: row;
 }
 
 .tienda {
-    flex: 0 0 100%; /* La tienda ocupa el 80% de la pantalla */
+    width: 80%;
     display: flex;
     flex-direction: column;
 }
 
 .carrito {
+    flex: 1;
     visibility: hidden;
-    flex: 0 0 20%; /* El carrito ocupa el 20% de la pantalla */
+    width: 20%;
     background-color: #333;
-    
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    overflow-y: visible; /* Cambia "auto" a "visible" */
+    scrollbar-width: thin;
+    scrollbar-color: yellow 3;
+    height: 100%;
 }
+
 
 /* Resto del CSS permanece igual */
 header {
@@ -76,4 +91,9 @@ footer {
 
 #carrito2 {
     margin: 20px;
+
+}
+.finCompra {
+    /* Tu código existente aquí... */
+    margin: 10px auto; /* Agrega margen y establece el margen horizontal a "auto" para centrar horizontalmente */
 }

@@ -4,30 +4,34 @@ import { listaNombresProductos } from './tienda.js';
 window.onload = () => {
     function annadirProducto(nombreProducto, cantidad, precioTotal) {
         let carrito = document.getElementById('carrito2');
-
         let productosEnCarrito = carrito.querySelectorAll('.producto');
         let productoExistente = Array.from(productosEnCarrito).find(producto => producto.querySelector('.nombre').textContent === nombreProducto);
     
         if (productoExistente) {
-            let cantidadExistente = parseInt(productoExistente.querySelector('.cantidad').textContent);
-            let precioTotalExistente = parseFloat(productoExistente.querySelector('.precio').textContent);
-            cantidadExistente += cantidad;
-            precioTotalExistente += precioTotal;
-            productoExistente.querySelector('.cantidad').textContent = cantidadExistente;
-            productoExistente.querySelector('.precio').textContent = precioTotalExistente + '€';
+            let cantidadExistente = parseInt(productoExistente.querySelector('.cantidad').textContent.split(':')[1].trim());
+            let precioTotalExistente = parseFloat(productoExistente.querySelector('.precio').textContent.split(':')[1].replace('€', '').trim());
+    
+            if (cantidadExistente + cantidad > 9) {
+                alert('No se pueden agregar más de 9 copias del producto al carrito.');
+            } else {
+                cantidadExistente += cantidad;
+                precioTotalExistente += precioTotal;
+                productoExistente.querySelector('.cantidad').textContent = 'Cantidad: ' + cantidadExistente;
+                productoExistente.querySelector('.precio').textContent = 'Precio: ' + precioTotalExistente.toFixed(2) + '€';
+            }
         } else {
             let productoHTML = `
                 <div class="producto">
                     <div class="nombre">${nombreProducto}</div>
-                    <span class="cantidad">${cantidad}</span>
-                    <span class="precio">${precioTotal}€</span>
+                    <span class="cantidad">Cantidad: ${cantidad}</span>
+                    <span class="precio">Precio: ${precioTotal.toFixed(2)}€</span>
                 </div>
             `;
             carrito.innerHTML += productoHTML;
         }
     }
     
-
+    
     function CargarGestoresEventos() {
         // Selecciona todos los spinners
         var spinners = document.querySelectorAll('.quantity-spinner');
@@ -64,8 +68,46 @@ window.onload = () => {
                 let precioTotal = cantidad * precioUnitario;
                 console.log(`Producto: ${nombreProducto}, Cantidad: ${cantidad}, Precio Total: ${precioTotal}€`);
                 annadirProducto(nombreProducto, cantidad, precioTotal);
+                //poner el spinner a 0 
+                producto.querySelector('.quantity-spinner').value = 0;
+                //ocultar boton y quitar cantidad
+                boton.disabled = true;
+                boton.textContent = 'Comprar';
             });
         });
+        
+       //aumenta el ancho del carrito
+       
+       carrito.addEventListener('mouseenter',function(){
+           carrito.style.marginLeft = '0px';
+           carrito.style.flex = '0 0 20%';
+           let carrito2 = document.getElementById('carrito2');
+           let productosEnCarrito = carrito2.querySelectorAll('.producto');
+           
+           // Agrega eventos de mouseover y mouseout a cada producto en el carrito
+           productosEnCarrito.forEach(producto => {
+               // Agrega un evento de mouseover para cambiar el estilo cuando el cursor está sobre el producto
+               producto.addEventListener('mouseover', function() {
+                   console.log('Entra');
+                   this.style.backgroundColor = 'lightgray'; // Cambia el color de fondo del producto
+               });
+   
+               // Agrega un evento de mouseout para restaurar el estilo cuando el cursor sale del producto
+               producto.addEventListener('mouseout', function() {
+                   this.style.backgroundColor = ''; // Restaura el color de fondo del producto
+               });
+           });
+           
+       });
+
+        carrito.addEventListener('mouseleave',function(){
+            carrito.style.marginLeft = '1%';
+           carrito.style.flex = '0 0 18%';
+          
+        });
+        
+       
+       
     }
 
     function imprimirProductoHTML(producto) {
