@@ -116,6 +116,17 @@ window.onload = () => {
           
         });
         
+        let finalizar = document.getElementById('finCompra');
+        finalizar.addEventListener('click',function(){
+            let productosEnCarrito = document.getElementById('productosEnCarrito');
+            let productosEnCarrito2 = productosEnCarrito.querySelectorAll('.producto');
+            productosEnCarrito2.forEach(producto => {
+                producto.remove();
+            });
+            carrito.style.visibility = 'hidden';
+            tienda.style.flex = '0 0 100%';
+            alert('Compra realizada con éxito. Gracias por su compra.');        
+        });
        
        
     }
