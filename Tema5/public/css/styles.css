@@ -1,73 +1,45 @@
-header{    
-  display: block;
-  background: #265073;
-  font-size: 40px;    
-  text-align: center;
-  padding: 20px 0;
-  color: white;
-}
-
-.centrado{
-  text-align: center;
-}
-
-.titulo{
-  background: #2D9596;
-  font-size: 32px;    
-  text-align: center;
-  color: white;
-  margin: 0;  
-}
-
-.bajo{
-  border-bottom: 1px solid #000;
-}
-
-.titulo2{
-  background: #9AD0C2;
-  font-size: 26px;    
-  text-align: center;
-  color: #265073;  
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contenedor{
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  
-}
-
-.columna{   
-  flex-basis: 30%; 
-  max-width: 30%; 
-  background-color: #f2f2f2;
-  padding: 20px;
-  border: 1px solid #ddd;
-  margin-right: 20px;
-  overflow: auto;
-  background-color: #c2d495;
-  height: fit-content;
-}
-
-.borde{
-  border: 7px solid #1C6EA4;
-  background-color: #d9f0a0;
-  min-height: 100%;
-}
-
-body, html {
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  height: 100%;
+  background-color: #f2f2f2;
 }
 
-.todo{
-  top: 0;
-  left: 0;
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Estilos para el select */
+#combobox {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
   width: 100%;
-  height: 100%;
-  background-color: black;
+}
+
+/* Estilos para el botón */
+#boton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#boton:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos centrados */
+.centered {
+  display: block;
+  margin: 0 auto;
 }
