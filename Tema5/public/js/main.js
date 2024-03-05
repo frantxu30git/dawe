@@ -8,18 +8,18 @@ window.onload = () => {
     .then(response => response.json())
     .then(response => {
         console.log(response);
-        let h1s = document.querySelector("h1");
         let h2s = document.querySelector("h2");
+        let h3s = document.querySelector("h3");
         let imgs = document.querySelector("img");
         // Verificar si el h1 existe antes de intentar eliminarlo
-        if (h1s) {
+        if (h2s) {
             // Eliminar el h1
-            h1s.remove();
+            h2s.remove();
             console.log("h1 eliminado");
-            while(h2s){
-                //Eliminar el h2 o h2s
-                h2s.remove();
-                h2s = document.querySelector("h2");
+            while(h3s){
+                //Eliminar el h3o h3s
+                h3s.remove();
+                h3s = document.querySelector("h2");
                 console.log("h2 eliminado");
             }             
             imgs.remove();
@@ -51,14 +51,14 @@ window.onload = () => {
         console.log(thumbnail_L);
 
         // titulo
-        let titulo = document.createElement("h1");
+        let titulo = document.createElement("h2");
         titulo.innerText = detalles["title"];
         document.body.appendChild(titulo);
         console.log("Titulo añadido : " + titulo.textContent);
                 
         //Autor o autores 
         for(let i = autores.length - 1; i >= 0; i--){
-            let autor = document.createElement("h2");
+            let autor = document.createElement("h3");
             autor.innerText = autores[i].name;
             document.body.appendChild(autor);
             console.log("Autor añadido : " + autor.textContent);
