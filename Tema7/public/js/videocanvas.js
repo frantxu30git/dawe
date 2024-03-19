@@ -32,35 +32,49 @@ window.onload = function() {
 
 	//Ejercicio c) Rotar el video	
 	var rotar = document.getElementById("rotar");
-	rotar.onclick = function() {
-	//	rotar();
-	};
+	var display = document.getElementById("display");
+	rotar.addEventListener("click", function() {
+			girar(display);			
+		});
+	
 	
 	//Ejercicio d) Añadir sonido
-	var sonido = document.getElementById("loadAudio");
-	//sonido.onclick = loadAudio("audio/soundtrack.mp3").then(audio => audio.play());
-	//console.log("Audio cargado");
+	
+
 	//Ejercicio e) Mostrar el video en formato Pip
+	//no se aplican los efectos en el modo pip
+	var pip = document.getElementById("pip");
+	pip.addEventListener("click", async function() {
+		try {
+			await video.requestPictureInPicture();
+		  } catch (error) {
+			console.error("Error en el modo pip", error);
+		  }
+	});
 }
 
-function rotar() {
-	var x      = 10;
-	var y      = 10;
-	var width  = 100;
-	var height = 100
-	var cx     = x + 0.5 * width;   // x of shape center
-	var cy     = y + 0.5 * height;  // y of shape center
+function girar(display) {
+	var x      = (display.width - video.width);
+	var y      = (display.height - video.height) ;	
+	var cx     = x + 0.5 * display.width;   
+	var cy     = y + 0.5 * display.height;  	
+	display.getContext("2d").clearRect(0, 0, display.width, display.height);
 	
-	context.fillStyle = "#ff0000";
-	context.fillRect(x, y, width, height);  //draw normal shape
+	drawVideo(display.getContext("2d"), x, y, cx, cy, display.width, display.height);
 	
-	context.translate(cx, cy);              //translate to center of shape
-	context.rotate( (Math.PI / 180) * 25);  //rotate 25 degrees.
-	context.translate(-cx, -cy);            //translate center back to 0,0
-	
-	context.fillStyle = "#0000ff";
-	context.fillRect(x, y, width, height);
+	requestAnimationFrame(function(){
+		girar(display);
+	});
 }
+
+function drawVideo(context, x, y, cx, cy, width, height) {
+	context.translate(cx, cy);              
+	context.rotate( (Math.PI / 180) * 0.5);  
+	context.translate(-cx, -cy);             
+
+	context.drawImage(video, x, y, width, height);	
+}
+
 	
 
 function cambiarEfecto(e){
@@ -71,9 +85,11 @@ function cambiarEfecto(e){
 	} 
 	else if ( id == "cienciaFiccion" ){
 		efecto = scifi;
+		console.log("scifi");
 	}
 	else {
 		efecto = null;
+		console.log("normal");
 	}
 }
 
