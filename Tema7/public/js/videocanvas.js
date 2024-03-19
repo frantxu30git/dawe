@@ -39,7 +39,9 @@ window.onload = function() {
 	
 	
 	//Ejercicio d) Añadir sonido
-	
+	document.getElementById('loadAudio').addEventListener('click', function() {
+		loadAudio("../audio/soundtrack.mp3").then(audio => audio.play());
+	});
 
 	//Ejercicio e) Mostrar el video en formato Pip
 	//no se aplican los efectos en el modo pip
@@ -138,7 +140,14 @@ function procesarFrame(e) {
 	// requestAnimationFrame(procesarFrame);
 
 }
-
+function loadAudio(src) {
+	return new Promise((resolve, reject) => {
+		const audio = new Audio();
+		audio.src = src;
+		audio.onloadeddata = () => resolve(audio);
+		audio.onerror = (e) => reject(e);
+	});
+}	
 function byn(pos, r, g, b, data) {
 	var gris = (r+g+b)/3;
 
