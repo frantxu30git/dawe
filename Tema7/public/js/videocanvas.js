@@ -26,7 +26,6 @@ window.onload = function() {
 	};
 
 	//Ejercicio b) cambiar efecto del video
-	// Creo que esta hecho pero no se cambia el efecto
 	var ciencia = document.getElementById("cienciaFiccion");
 	ciencia.onclick = cambiarEfecto;
 
@@ -71,13 +70,13 @@ function girar(display) {
 
 function drawVideo(context, x, y, cx, cy, width, height) {
 	context.translate(cx, cy);              
-	context.rotate( (Math.PI / 180) * 0.5);  
+	context.rotate((Math.PI / 180) * 0.1);  
 	context.translate(-cx, -cy);             
 
 	context.drawImage(video, x, y, width, height);	
 }
 
-	
+
 
 function cambiarEfecto(e){
 	var id = e.target.getAttribute("id");
