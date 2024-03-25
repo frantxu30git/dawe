@@ -37,7 +37,11 @@
             Libros
         </legend>        
         <form >
-            <input id="Cantidad" type="text">
+            <input id="libros" type="text">
+            <div id="libros-sugerencias">
+                <ul id="sugerencias-lista">
+                </ul>
+            </div>
             Cantidad (Máx 5):
             <input id="numero"type="number" min="1" max="5">
         </form>
@@ -49,7 +53,9 @@
         </legend>
         Elige los ficheros a subir:    
         <input type="file" id="fileselect" name="fileselect" multiple >
-        <div id="filedrag">o arrastra aquí los ficheros</div>
+        <div id="filedrag" class="elementoArrastrable">
+            Arrastra aquí los ficheros 
+          </div>
     </fieldset>   
     <input type="submit">
     <br>
@@ -66,7 +72,7 @@
     punto 3: hecho
     punto 4: no
     punto 5: hecho
-    punto 6: no
+    punto 6: no (falta en campo de Drag and Drop)
     punto 7: hecho(literalmente lo que subio él)
 
 

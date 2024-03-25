@@ -71,5 +71,26 @@ window.onload = () => {
         || document.getElementById("email").value == "" || document.getElementById("Libro").value == "" 
         || document.getElementById("fecha").value == "" || document.getElementById("numero").value == "";
     }
-    
+   var libro = document.getElementById("libros");
+   // libro.addEventListener("click", agregarSugerencias);
+     /*function mostrarSugerencias() {
+        var libros = ["Libro1", "Libro2", "Libro3", "Libro4", "Libro5"];
+        var libro = document.getElementById("libros");
+      
+        // Creamos el texto de sugerencias
+        var sugerenciasTexto = libros.join(", ");
+      
+        // Asignamos el texto de sugerencias al atributo placeholder del input
+        libro.placeholder = sugerenciasTexto;
+      }*/
+
+      document.getElementById('libros').addEventListener('click', function() {
+        document.getElementById('libros-sugerencias').style.display = 'block';
+    });
+
+    // Manejar la selección de un libro del desplegable
+    document.getElementById('libros-sugerencias').addEventListener('change', function() {
+        document.getElementById('libros').value = this.value;
+        this.style.display = 'none'; // Ocultar el desplegable después de seleccionar un libro
+    });  
 }
