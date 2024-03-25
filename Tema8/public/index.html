@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAWE</title>
+    <meta name="description" content="Description">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js"></script>
+</head>
+<body>           
+    
+    <fieldset>
+        <legend>
+            Datos del cliente
+        </legend>
+        <form >
+            Nombre:
+            <input id="Nombre" type="text"placeholder="Introduce tu nombre" autofocus>
+        </form>            
+        <br>
+        <br>
+        <form id="Telefono">
+            Telefono: 
+            <input id="numTelefono" type="tel" placeholder="Patrón:123-456-789">
+        </form>
+        <br>
+        <br>
+        <form >
+            E-mail: 
+            <input id="email"type="email" placeholder="Introduce tu direccion de correo electronico">
+        </form>
+    </fieldset>
+    
+    <fieldset>
+        <legend>
+            Libros
+        </legend>        
+        <form >
+            <input id="Cantidad" type="text">
+            Cantidad (Máx 5):
+            <input id="numero"type="number" min="1" max="5">
+        </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            File Updates
+        </legend>
+        Elige los ficheros a subir:    
+        <input type="file" id="fileselect" name="fileselect" multiple >
+        <div id="filedrag">o arrastra aquí los ficheros</div>
+    </fieldset>   
+    <input type="submit">
+    <br>
+    <br>
+    <div id="messages"><p>Mensajes de estado</p></div>
+            
+</body>
+
+    
+</html>
+<!-- 
+    punto 1: hecho
+    punto 2: hecho
+    punto 3: hecho
+    punto 4: no
+    punto 5: hecho
+    punto 6: no
+    punto 7: hecho(literalmente lo que subio él)
+
+
+-->
