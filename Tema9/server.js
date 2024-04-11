@@ -3,11 +3,10 @@ const multer = require('multer');
 const mongojs = require('mongojs');
 const app = express();
 
-// Tu cadena de conexión a la base de datos MongoDB
 const db = mongojs('mongodb://localhost:27017/laboratorio', ['subidas']);
 
 
-// Serve static files from 'public' folder
+
 app.use(express.static('public'));
 
 const fileFilter = (req, file, cb) => {
@@ -23,7 +22,6 @@ const storage = multer.diskStorage({
       cb(null, 'public/imgs/');
     },
     filename: function(req, file, cb) {
-      // Conserva el nombre original del archivo y la extensión
       cb(null, file.originalname);
     }
   });
@@ -40,7 +38,7 @@ app.post('/upload/files', upload.array('files'), (req, res) => {
   }));
 
   const formData = {
-    nombre: req.body.Nombre, // Asegúrate de que esto coincida
+    nombre: req.body.Nombre, 
     telefono: req.body.Telefono,
     email: req.body.Email,
     libros: req.body.Libros,
@@ -49,7 +47,6 @@ app.post('/upload/files', upload.array('files'), (req, res) => {
   };
   
   console.log(req.body);
-  // Insertar datos del formulario y archivos en MongoDB usando mongojs
   db.subidas.insert(formData, (err, doc) => {
     if (err) {
       console.error(err);

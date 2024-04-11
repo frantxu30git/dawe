@@ -18,13 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
     ['dragleave', 'drop'].forEach(eventName => {
         dropArea.addEventListener(eventName, QuitarResaltado, false);
     });
-    //añade un evento al boton submit que al hacer click se envie el formulario y muestre por consola si se ha enviado
     form.addEventListener('submit', function(e) {
         e.preventDefault(); // Prevenir el envío tradicional del formulario
 
         const formData = new FormData(form);
-        // Aquí podrías añadir más datos al formData si es necesario, por ejemplo:
-        // formData.append('key', 'value');
+
 
         fetch('/upload/files', {
             method: 'POST',
@@ -33,11 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Selecionamos el elemento del DOM donde queremos mostrar los mensajes
                 const statusMessages = document.getElementById('status-messages');
                 statusMessages.innerHTML = ''; // Limpiamos los mensajes anteriores
                 
-                // Añadimos la información de cada archivo subido
                 data.files.forEach(file => {
                     const fileElement = document.createElement('p');
                     fileElement.textContent = `Datos del fichero: ${file.originalName} Tipo: ${file.mimeType} Tamaño: ${file.size} bytes`;
@@ -71,11 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 data.files.forEach(file => {
                     const imgLink = document.createElement('a');
-                    imgLink.href = `imgs/${file.originalName}`; // Asegúrate de que esta ruta es accesible en tu servidor
-                    imgLink.target = '_blank'; // Abre el enlace en una nueva pestaña
+                    imgLink.href = `imgs/${file.originalName}`; 
+                    imgLink.target = '_blank'; 
                     const img = new Image();
-                    img.src = `imgs/${file.originalName}`; // Asegúrate de que esta ruta es accesible en tu servidor
-                    img.style.width = '100px'; // Ajusta según necesites
+                    img.src = `imgs/${file.originalName}`; 
+                    img.style.width = '100px';
                     imgLink.appendChild(img);
                     statusMessages.appendChild(imgLink);
                 });
