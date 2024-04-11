@@ -1,7 +1,11 @@
 const express = require('express');
 const multer = require('multer');
-const path = require('path');
+const mongojs = require('mongojs');
 const app = express();
+
+// Tu cadena de conexión a la base de datos MongoDB
+const db = mongojs('mongodb://localhost:27017/laboratorio', ['subidas']);
+
 
 // Serve static files from 'public' folder
 app.use(express.static('public'));
@@ -28,19 +32,39 @@ const storage = multer.diskStorage({
   
 
 app.post('/upload/files', upload.array('files'), (req, res) => {
-  try {
-    const filesInfo = req.files.map(file => file.path);
-    res.json({
-      success: true,
-      message: "Files uploaded successfully!",
-      data: req.body,
-      files: filesInfo
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Error uploading files" });
-  }
-});
+  const filesData = req.files.map(file => ({
+    originalName: file.originalname,
+    mimeType: file.mimetype,
+    path: file.path,
+    size: file.size
+  }));
+
+  const formData = {
+    nombre: req.body.Nombre, // Asegúrate de que esto coincida
+    telefono: req.body.Telefono,
+    email: req.body.Email,
+    libros: req.body.Libros,
+    cantidad: req.body.Cantidad,
+    files: filesData
+  };
+  
+  console.log(req.body);
+  // Insertar datos del formulario y archivos en MongoDB usando mongojs
+  db.subidas.insert(formData, (err, doc) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: "Error al guardar en MongoDB" });
+    } else {
+      res.json({
+        success: true,
+        message: "Files uploaded and data saved to MongoDB successfully!",
+        data: formData,
+        files: filesData
+      });
+    }
+  });
+}
+);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

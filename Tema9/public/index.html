@@ -6,17 +6,17 @@
 </head>
 <body>
     <form id="formulario" enctype="multipart/form-data">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" placeholder="Nombre" autofocus required>
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre" placeholder="Nombre" name="Nombre" autofocus required>
         <br>
         <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" placeholder="123-456-789" pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{3}" required>
+        <input type="tel" id="telefono" placeholder="123-456-789"  name="Telefono"  pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{3}" required>
         <br>
         <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="ejemplo@dominio.com" required>
+        <input type="email" id="email" placeholder="ejemplo@dominio.com"  name="Email"  required>
         <br>
         <label for="libros">Libros:</label>
-        <input type="text" id="libros" placeholder="Libro1, Libro2..." list="libros-sugeridos" required>
+        <input type="text" id="libros" placeholder="Libro1, Libro2..." list="libros-sugeridos"  name="Libros" required>
         <datalist id="libros-sugeridos">
             <option value="Libro1">
             <option value="Libro2">
@@ -26,7 +26,7 @@
         </datalist>
         <br>
         <label for="cantidad">Cantidad:</label>
-        <input type="number" id="cantidad" min="1" max="5" step="1" required>
+        <input type="number" id="cantidad" min="1" max="5" step="1" name="Cantidad" required>
         <br>
         <label for="file-upload" class="file-upload">Archivo:</label>
         <input type="file" id="file-upload" name="files" required multiple>
