@@ -87,6 +87,6 @@ ul#stickies li:hover {
 	-ms-transform: rotate(0deg) scale(1.25);
 	transform: rotate(0deg) scale(1.25);
 	z-index: 10;
-	/*background-color: aqua;*/
+	background-color: #ecde61;
 }
 
