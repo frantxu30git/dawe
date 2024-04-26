@@ -30,17 +30,12 @@ router.use(session({
     cookie: { maxAge: 60 * 60 * 1000 } // 1 hora
 }));
 function isAuthenticated(req, res, next) {
-    if (req.session.user && req.session.user.email) { // Verificar el email en la sesión
-        return next();
+    if (req.session.email) { // Usa el email para verificar autenticación
+        return next(); // El usuario está autenticado, continuar
     } else {
-        res.render('error', {
-            error: 'Unauthorized',
-            message: 'Por favor, inicie sesión para acceder a esta sección.'
-        });
+        res.redirect('/email-password.html'); // No autenticado, redirigir a la página de inicio de sesión
     }
 }
-
-
 
 router.post('/guardar-sesion', (req, res) => {
     const { email } = req.body;
@@ -53,28 +48,22 @@ router.post('/guardar-sesion', (req, res) => {
 });
 // Aplicar middleware a rutas protegidas
 router.get('/users', isAuthenticated, async (req, res) => {
-    res.setHeader('Cache-Control', 'no-store'); // Evitar almacenamiento en caché
-    const email = req.session.user?.email;
-
+    var email = req.session.user; // Obtiene la información del usuario de la sesión
+    console.log(email);
     if (!email) {
-        return res.render('error', {
-            error: 'Unauthorized',
-            message: 'Por favor, inicie sesión para acceder a esta sección.'
-        });
+        res.render('error');
     }
-
     try {
-        const clientes = await Cliente.find({});
-        res.render('users', { email, clientes });
+        // Obtener la lista de clientes desde MongoDB
+        const clientes = await Cliente.find({}); // Usar `await` para esperar el resultado
+
+        // Renderizar la vista `users` con la lista de clientes
+        res.render('users', {email, clientes});
     } catch (error) {
-        res.render('error', {
-            error: 'Server Error',
-            message: 'Error al obtener clientes.'
-        });
+        console.error('Error al obtener clientes:', error);
+        res.render('error', {message: 'Error al obtener clientes'}); // Manejar el error
     }
 });
-
-
 router.get('/',(req,res) => {
     if(req.session.email) {
         return res.redirect('/users');
@@ -82,22 +71,24 @@ router.get('/',(req,res) => {
     res.redirect('/email-password.html');
 });
 //acceder a users si estas logeado
+router.get('/users', (req,res) => {
+    if(req.session.email) {
+        res.redirect('/users'); 
+    }
+    res.render('error', { error, message: 'Por favor logeate para acceder a usuarios' });
+});
 
 
 // Ruta para procesar inicio de sesión
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
 
-    if (isValidUser(email, password)) { // Simulación de autenticación
-        req.session.user = { email: email }; // Guarda el email en la sesión
-        console.log('Sesión establecida:', req.session); // Verificar qué se guarda en la sesión
-        res.redirect('/users');
-    } else {
-        res.render('error', { error: 'Unauthorized', message: 'Correo electrónico o contraseña incorrectos.' });
+    // Lógica para autenticar usuario (ejemplo genérico)
+    if (isAuthenticated(email, password)) {
+        req.session.email = email; // Guardar información del usuario en la sesió
+        res.redirect('/users'); // Redirigir después del inicio de sesión
     }
 });
-
-
 
 
 
