@@ -24,7 +24,7 @@ router.use(session({
     saveUninitialized: false, // No guardar sesiones sin inicializar
     resave: false, // No re-guardar sesiones sin cambios
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/dawe',
+        mongoUrl: 'mongodb://localhost/tu-base-de-datos',
         collectionName: 'sessions' // Nombre de la colección para las sesiones
     }),
     cookie: { maxAge: 60 * 60 * 1000 } // 1 hora
@@ -33,7 +33,7 @@ function isAuthenticated(req, res, next) {
     if (req.session.email) { // Usa el email para verificar autenticación
         return next(); // El usuario está autenticado, continuar
     } else {
-        res.redirect('/email-password.html'); // No autenticado, redirigir a la página de inicio de sesión
+        res.redirect('/login'); // No autenticado, redirigir a la página de inicio de sesión
     }
 }
 
@@ -51,7 +51,7 @@ router.get('/users', isAuthenticated, async (req, res) => {
     var email = req.session.user; // Obtiene la información del usuario de la sesión
     console.log(email);
     if (!email) {
-        res.render('error');
+        email = "gola";
     }
     try {
         // Obtener la lista de clientes desde MongoDB
@@ -64,13 +64,41 @@ router.get('/users', isAuthenticated, async (req, res) => {
         res.render('error', {message: 'Error al obtener clientes'}); // Manejar el error
     }
 });
-router.get('/',(req,res) => {
-    if(req.session.email) {
-        return res.redirect('/users');
+
+// usaremos esta funcion para verificar si el usuario esta logeado
+// y no permitir que acceda a / sin hacer logout
+function redirectIfAuthenticated(req, res, next) {
+    if (req.session.email) {
+        // Si hay una sesión activa, redirige a la página de perfil de usuario
+        res.redirect('/users'); 
+    } else {
+        // Si no hay sesión, continua con la página principal
+        next();
     }
-    res.redirect('/email-password.html');
+}
+//##APARTADO 4
+// Ruta principal modificada para usar el nuevo middleware
+router.get('/', redirectIfAuthenticated, (req,res) => {
+    if(req.session.email) {
+        return res.redirect('/email-password.html');
+    }
+    res.render('index', { title : 'title'});
 });
-//acceder a users si estas logeado
+
+// Ruta para procesar inicio de sesión
+router.post('/login', (req, res) => {
+    const { email, password } = req.body;
+
+    // Lógica para autenticar usuario (ejemplo genérico)
+    if (isAuthenticated(email, password)) {
+        req.session.email = email; // Guardar información del usuario en la sesión
+        res.redirect('/users'); // Redirigir después del inicio de sesión
+    } else {
+        res.redirect('/email-password.html'); // Redirigir con mensaje de error
+    }
+});
+
+
 router.get('/users', (req,res) => {
     if(req.session.email) {
         res.redirect('/users'); 
@@ -79,31 +107,15 @@ router.get('/users', (req,res) => {
 });
 
 
-// Ruta para procesar inicio de sesión
-router.post('/login', (req, res) => {
-    const { email, password } = req.body;
-
-    // Lógica para autenticar usuario (ejemplo genérico)
-    if (isAuthenticated(email, password)) {
-        req.session.email = email; // Guardar información del usuario en la sesió
-        res.redirect('/users'); // Redirigir después del inicio de sesión
-    }
-});
-
-
-
-router.get('/logout', (req, res) => {
+router.get('/logout',(req,res) => {
     req.session.destroy((err) => {
-        if (err) {
-            console.error("Error al destruir la sesión:", err);
-            res.status(500).send("Error al cerrar sesión");
-        } else {
-            res.clearCookie('connect.sid'); // Eliminar la cookie de sesión
-            res.redirect('/'); // Redirigir a la página de inicio después de cerrar sesión
+        if(err) {
+            return console.log(err);
         }
+        res.redirect('/');
     });
-});
 
+});
 
 router.post('/getToken', (req, res) => {
     const idToken = req.body.idToken;
@@ -128,51 +140,6 @@ router.post('/getToken', (req, res) => {
             console.log('Error al verificar el token:', error);
             res.render('error', { error, message: 'You must be signed-up' });
         });
-});
-// Añadir un nuevo cliente
-router.post('/clientes/nuevo', isAuthenticated, async (req, res) => {
-    try {
-        const { nombre, apellido, email } = req.body;
-        // Crear y guardar el nuevo cliente
-        const nuevoCliente = new Cliente({ nombre, apellido, email });
-        await nuevoCliente.save();
-
-        res.redirect('/users'); // Redirigir a la lista de clientes
-    } catch (error) {
-        console.error("Error al añadir cliente:", error);
-        res.status(500).send("Error al añadir cliente");
-    }
-});
-
-// Editar un cliente existente
-router.post('/clientes/:id/editar', isAuthenticated, async (req, res) => {
-    try {
-        const { nombre, apellido, email } = req.body;
-        const clienteId = req.params.id;
-
-        // Actualizar el cliente
-        await Cliente.findByIdAndUpdate(clienteId, { nombre, apellido, email });
-
-        res.redirect('/users'); // Redirigir a la lista de clientes
-    } catch (error) {
-        console.error("Error al editar cliente:", error);
-        res.status(500).send("Error al editar cliente");
-    }
-});
-
-// Eliminar un cliente
-router.get('/clientes/:id/eliminar', isAuthenticated, async (req, res) => {
-    try {
-        const clienteId = req.params.id;
-
-        // Eliminar el cliente
-        await Cliente.findByIdAndDelete(clienteId);
-
-        res.redirect('/users'); // Redirigir a la lista de clientes
-    } catch (error) {
-        console.error("Error al eliminar cliente:", error);
-        res.status(500).send("Error al eliminar cliente");
-    }
 });
 
 
