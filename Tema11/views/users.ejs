@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+    <!-- Incluir Firebase para el lado del cliente -->
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-auth-compat.js"></script>
+
+    <!-- Inicializar Firebase y definir la función logout -->
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBYbGJKSf_K-pF5jgTLkxm8weuH5mbq4Lo",
+            authDomain: "dawe-b410a.firebaseapp.com",
+            projectId: "dawe-b410a",
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        function logout() {
+            // Cerrar sesión en Firebase
+            firebase.auth().signOut().then(() => {
+                // Redirigir para cerrar sesión en el servidor
+                window.location.href = '/logout';
+            }).catch((error) => {
+                console.error("Error al cerrar sesión en Firebase:", error);
+            });
+        }
+    </script>
+</head>
+<body>
+<!-- Saludo personalizado -->
+<h1>Hello, <%= email.email %></h1>
+
+<!-- Formulario para insertar clientes -->
+<h2>Insertar Cliente</h2>
+<form action="/clientes/nuevo" method="POST">
+    <label para="nombre">Nombre:</label>
+    <input tipo="text" id="nombre" name="nombre" requerido>
+
+    <label para="apellido">Apellido:</label>
+    <input tipo="text" id="apellido" name="apellido" requerido>
+
+    <label para="email">Email:</label>
+    <input tipo="email" name="email" name="email" requerido>
+
+    <button type="submit">Enviar</button>
+</form>
+
+<!-- Lista de clientes y formularios de edición -->
+<h2>Clientes</h2>
+<ul>
+    <% if (clientes && clientes.length > 0) { %>
+        <% clientes.forEach((cliente) => { %>
+            <li>
+                <div>
+                    <strong>Nombre:</strong> <%= cliente.nombre %> <br>
+                    <strong>Apellido:</strong> <%= cliente.apellido %> <br>
+                    <strong>Email:</strong> <%= cliente.email %> <br>
+                    <!-- Opciones para eliminar -->
+                    <a href="/clientes/<%= cliente._id %>/eliminar">Eliminar</a>
+                </div>
+
+                <!-- Formulario para editar el cliente -->
+                <form action="/clientes/<%= cliente._id %>/editar" method="POST">
+                    <label para="nombre">Nombre:</label>
+                    <input tipo="text" name="nombre" value="<%= cliente.nombre %>" requerido>
+
+                    <label para="apellido">Apellido:</label>
+                    <input tipo="text" name="apellido" value="<%= cliente.apellido %>" requerido>
+
+                    <label para="email">Email:</label>
+                    <input tipo="email" name="email" value="<%= cliente.email %>" requerido>
+
+                    <button type="submit">Editar</button>
+                </form>
+            </li>
+        <% }); %>
+    <% } else { %>
+        <li>No hay clientes para mostrar</li>
+    <% } %>
+</ul>
+
+<!-- Botón para cerrar sesión -->
+<button onclick="logout()">Cerrar Sesión</button>
+</body>
+</html>
