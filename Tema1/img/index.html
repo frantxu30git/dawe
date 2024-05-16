@@ -1,0 +1,172 @@
+<!doctype html>
+<!-- Especificación 1: Tema oscuro -->
+<html data-bs-theme="dark">
+    <head>
+        <title>Bootstrap</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Descripcion">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        
+        <style>
+            header {
+                height: 80px;
+                background-image: url("img/wallpaper.jpg");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                text-shadow: 1px 0 gray, -1px 0 gray, 0 1px gray, 0 -1px gray,
+                        1px 1px gray, -1px -1px gray, 1px -1px gray, -1px 1px gray;
+            }
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+       
+        <!-- Especificación 3: Navegador (COMPLETADO)-->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">               
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li>
+                            <a class="nav-link active" href="#">Inicio</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#">Sobre el sitio</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#">Otro enlace</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+            </div>
+        </nav>
+
+        <!-- Especificación 4: Header (COMPLETADO)-->
+        <header class="text-center text-white text border-bottom border-top border-white">
+            <h1>Desarrollo de Aplicaciones Web Enriquecidas</h1>
+        </header>
+        
+        <!-- Especificación 5: Grid con aside y main (COMPLETO)--> 
+        <div class="container-fluid">
+            <div class="row">
+                <aside class="col-md-3 border-end">
+                    <!-- Especificación 6a: Jumbotron con lista (COMPLETO)-->
+                    <div class="jumbotron border rounded">
+                        <h3>Últimos avisos</h3>                  
+                        <ul class="list-group">
+                            <li class="list-group-item">Ascensor averiaro por decima vez en 2 semanas</li>
+                            <li class="list-group-item">Llega la inflacion a las maquinas expendedoras</li>
+                            <li class="list-group-item">Eduroam vuelve a caerse a primera hora de la mañana</li>
+                        </ul>
+                    </div>
+                    <!-- Especificación 6b: Lista con hover y encabezado (COMPLETO)-->
+                    <h3 class="border-bottom text-center">Temario</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-action">Tutorial de HTML y CSS</li>
+                        <li class="list-group-item list-group-item-action">Tutorial De JacaScript</li>
+                        <li class="list-group-item list-group-item-action">Programacion Orientada a Objetos en JAvaScript</li>
+                        <li class="list-group-item list-group-item-action">ECMAScript</li>
+                        <li class="list-group-item list-group-item-action">Eventos y Gestores de Eventos en JavaScript</li>
+                        <li class="list-group-item list-group-item-action">Peticiones Asíncronas con AJAX y Promesas</li>
+                        <li class="list-group-item list-group-item-action">El elemento Canvas en HTML5</li>
+                        <li class="list-group-item list-group-item-action">Vídeo y Audio en HTML5</li>
+                        <li class="list-group-item list-group-item-action">Formularios y Drag&Drop (DnD) en HTML5</li>
+                        <li class="list-group-item list-group-item-action">Node, Express y MongoDB</li>
+                        <li class="list-group-item list-group-item-action">Web Storage (almacenamiento local)</li>
+                        <li class="list-group-item list-group-item-action">Gestión de sesiones en Express</li>
+                        <li class="list-group-item list-group-item-action">Aplicaciones Web Sin Conexión (Service Workers)</li>
+                        <li class="list-group-item list-group-item-action">Web Sockets</li>
+                        <li class="list-group-item list-group-item-action">React & React Native</li>
+                        <li class="list-group-item list-group-item-action"> Bootstrap</li>            
+                    </ul>
+                    <!-- Especificación 6c: Menú dropdown (Completado)-->
+                    <div class="container mt-5">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                               Escoge Evaluación
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">1º Evaluación</a></li>
+                                <li><a class="dropdown-item" href="#">2º Evaluación</a></li>
+                                <li><a class="dropdown-item" href="#">3º Evaluación</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                                     
+                </aside>
+                <main class="col-md-9">
+                    <!-- Especificación 7: Sections con articles (COMPLETADO)-->
+                    <section>
+                        <h1 class="border-bottom">Noticias</h1>
+                        <article class="border rounded p-3 mb-3 ">
+                            <h1 class="border-bottom">UPV/EHU y TECNALIA incorporan 7 investigadores e investigadoras de doble adscripción a sus proyectos</h1>
+                            <p>La Universidad del País Vasco/Euskal Herriko Unibertsitatea (UPV/EHU) y el centro de investigación y desarrollo tecnológico TECNALIA consolidan el programa de doble afiliación de investigadores e investigadoras, en su cuarto año de andadura. Este programa forma parte del acuerdo estratégico de colaboración entre la UPV/EHU y TECNALIA, con el objetivo de formar perfiles que desarrollen su actividad en las dos organizaciones y reforzar el posicionamiento en temáticas de interés común.</p>  
+                            <p>Así, a lo largo del año 2023 se han designado un total de 7 investigadores e investigadoras de doble adscripción y para este 2024 se prevé incorporar a la lista nuevas personas y consolidar así esta fórmula de colaboración, tal y como han presentado en un encuentro para introducir al nuevo personal investigador. En este encuentro se ha realizado también un balance del programa y planteado los objetivos para el próximo año.</p>
+                            <p>Entre los investigadores y las investigadoras con afiliación  a este programa, cinco son procedentes de la UPV/EHU: Lola Boyano, catedrática de Biología Celular en la Facultad de Medicina y Enfermería; José Luis Pedraz, catedrático de Farmacia y Tecnología Farmacéutica en la Facultad de Farmacia; Jesús María Blanco, profesor titular del Departamento de Mecánica de Fluidos y responsable del Master de Energías Renovables en el Medio Marino; José Luis Martín, catedrático de Tecnología Electrónica; y José Tomás San José, profesor titular del Departamento de Ingeniería Minera y Metalúrgica y Ciencia de los Materiales, estos tres últimos de la Escuela de Ingeniería de Bilbao.</p>
+                            <p>Por el lado del centro, las personas adscritas de TECNALIA son Salvador Ceballos, investigador principal del Área de Redes y responsable de Sistemas Embebidos y Electrónica de Potencia; y José Antonio Chica, investigador responsable de Transformación Digital de la Unidad de Transición Energética, Climática y Urbana, miembro del “High Level Construction Forum initiative”, DG GROWTH Comisión Europea.</p>
+                            <p>Tal y como ha afirmado Eva Ferreira, rectora de la Universidad del País Vasco, “la doble adscripción de investigadoras e investigadores, con un buen currículum y reconocida experiencia, es una fórmula adecuada para concertar sinergias y conseguir un efecto multiplicador en los resultados de la investigación”. Además, ha querido destacar que este acuerdo permite al personal “realizar investigaciones con mayor impacto en el entorno tecnológico de Euskadi”.</p>
+                            <p>Por su parte, Jesús Valero, director general de TECNALIA, ha explicado que “apostamos por la colaboración como herramienta de especialización y excelencia tanto en el ámbito de la innovación como del talento. Por ello, debemos apoyarnos en este Acuerdo Marco entre la UPV/EHU y TECNALIA para potenciar las capacidades de cada una de las organizaciones y lograr así programas de máximo enriquecimiento, como esta doble afiliación a través de las figuras de Colaborador Académico de investigación de la UPV/EHU y de Investigador Asociado a TECNALIA”.</p> 
+                            <footer class="text-end text-small border-top pt-2">Por Juankar - 01/01/2024</footer>
+                        
+                        </article>
+                        <article class="border rounded p-3 mb-3">
+                            <h1 class="border-bottom">El Bisky Team, de la Escuela de Ingeniería de Bilbao, rompe la barrera del sonido con el cohete HERMES</h1>
+                            <p>El equipo BiSKY Team, de la Escuela de Ingeniería de Bilbao, ha lanzado su primer cohete que entra en régimen supersónico, rompiendo, así, la barrera del sonido. El cohete, al que han bautizado con el nombre de HERMES, fue lanzado en la base militar de Zaragoza el pasado diciembre. Este nuevo hito supone un antes y un después en la historia del equipo de la UPV/EHU. Con este lanzamiento Bisky Team ha conseguido comprobar la eficacia de varios componentes desarrollados por el propio equipo, así como analizar su comportamiento durante el vuelo en situaciones de máxima exigencia. </p>
+                            <p>Como estaba previsto, HERMES alzó el vuelo a las 12.30h con un sonido notable desapareciendo en el cielo. Una vez llegada a la velocidad supersónica, se dio un fallo en el módulo de recuperación, lo que ocasionó la pronta finalización del vuelo; a pesar de ello, el equipo está satisfecho con el lanzamiento, ya que se han cumplido gran parte de los objetivos previstos en la misión. En este sentido cabe destacar que todos los subsistemas nuevos desarrollados por el equipo han alcanzado la velocidad máxima estimada en vuelo, entrando en régimen supersónico. </p>
+                            <p>Desde que este salió del rail de lanzamiento hasta momentos posteriores a alcanzar el régimen supersónico, el cohete mantuvo un vuelo estable atribuido a un comportamiento correcto de los elementos de control pasivos. Los sistemas de navegación y de recopilación de datos funcionaron correctamente recopilando información crucial del vuelo, que serán de gran utilidad para modelizar y validar el comportamiento del cohete, así como analizar el suceso que ocasiono la pronta finalización de vuelo. Toda la información obtenida en este lanzamiento permite al equipo validar y mejorar los diseños realizados de cara a superar nuevos retos. </p>
+                            <p>El Equipo probará estas nuevas mejoras en su cohete ATLAS, una plataforma de pruebas de alta cadencia para la prueba y validación de subsistemas en vuelo, que permitirá ensayar y validar las distintas mejoras, con lo que Bisky Team podrá abordar futuros lanzamientos más exigentes que ya tienen en mente. </p>
+                            <footer class="text-end text-small border-top pt-2">Por Javi - 01/01/21</footer>
+                        </article>
+                    </section>
+                    <br>
+                    <section>
+                        <h1 class="border-bottom">Más popular</h1>
+                        <article class="border rounded p-3 mb-3">
+                            <h1 class="border-bottom">El grupo BIOMICs utilizará el Laboratorio de la Unidad Genética Forense para identificar restos exhumados de la Guerra Civil</h1>
+                            <p>Un acuerdo impulsado por el Departamento de Igualdad, Justicia y Políticas Sociales del Gobierno Vasco permitirá que el grupo de investigadores e investigadoras multidisciplinares del grupo BIOMICs de la Universidad del País Vasco/Euskal Herriko Unibertsitatea utilice el Laboratorio de la Unidad Genética Forense del Instituto Vasco de Medicina Legal en Donostia – San Sebastián para identificar restos post-mortem de la Guerra Civil y la postguerra. Esos trabajos llegan para realizar las labores de identificación de los restos exhumados que se han encontrado hasta ahora y los que se hallen en un futuro en el marco del Programa de búsqueda de personas desaparecidas de la Guerra Civil de Gogora, el Instituto de la Memoria, la Convivencia y los Derechos Humanos. </p>
+                            <p>Según ha explicado la consejera Nerea Melgosa, con este acuerdo, las instituciones pretenden que este laboratorio sea un referente a nivel estatal en la identificación de este tipo de víctimas. “El uso de estas instalaciones del Instituto Vasco de Medicina Legal permitirá a BIOMICs optimizar sus trabajos de identificación y cotejo de muestras de ADN de los restos localizados e inhumados con los de los familiares”. </p>
+                            <p>Para el Vicerrector de Desarrollo Científico-social y Transferencia de la universidad pública vasca, Guillermo Quindós, este acuerdo tiene enorme relevancia: “el grupo BIOMICs de la UPV/EHU es líder en investigación referida a variabilidad genética humana y biomedicina, y destaca, entre otras áreas, en genética forense. Su aportación está siendo decisiva en la reparación histórica y moral que representa la búsqueda e identificación de personas desaparecidas durante la Guerra Civil. El acuerdo de hoy permitirá potenciar ese papel, lo cual es una buena noticia para nuestra sociedad y, en especial, para las familias que aún buscan a sus personas queridas”. </p>    
+                            <p>Y es que dentro del Programa de Búsqueda de Personas Desaparecidas de la Guerra Civil, Gogora cuenta con un Banco de ADN de familiares de personas desaparecidas durante el periodo bélico y la postguerra. Ese banco tiene actualmente 652 muestras para su análisis genético.   </p>
+                            <p>En los últimos años se han recuperado en la Comunidad Autónoma Vasca los restos de 296 víctimas del conflicto y de la represión franquista. El análisis genético de los restos post-mortem exhumados en Euskadi sirve para su comparación con los perfiles genéticos de las y los familiares incluidos en el Banco de ADN del Instituto de la Memoria, la Convivencia y los Derechos Humanos.  </p>
+                            <p>Gogora ha logrado identificar a un total de 50 víctimas mortales de las exhumadas hasta la fecha. En algunos casos junto a los restos humanos se localizaron placas identificativas que permitieron esa identificación, y en otros fue posible gracias a un análisis antropológico. Pero en 37 de los 50 casos, la identificación llegó gracias a la labor del análisis genético: merced al cotejo de los resultados obtenidos de los restos esqueléticos exhumados y el de los familiares de referencia, obteniendo compatibilidades genéticas. </p>
+                            <p>Es el caso de Luis Gauna Urrutia cuyos restos fueron hallados en 2022, en una fosa común en el camposanto de Begoña, en Bilbao. El banco de ADN de Gogora disponía de unas muestras aportadas en 2017 por uno de sus sobrinos. Una vez hecha la primera comprobación positiva, Gogora quiso confirmar el resultado obteniendo una nueva muestra de un segundo sobrino. El resultado de la prueba confirmó la primera identificación. José Ángel Gauna Martínez, sobrino de Luis, ha estado hoy presente en la presentación y ha conocido de primera mano cómo se realizan las pruebas. </p>  
+                            <footer class="text-end text-small border-top pt-2">Por Jose - 01/01/21</footer>
+                        </article>
+                        <article class="border rounded p-3 mb-3">
+                            <h1 class="border-bottom">Día Internacional de la Convivencia en Paz: Manifiesto de Crue Universidades Españolas</h1>
+                            <p>La Asamblea General de Naciones Unidas, reconociendo la necesidad de eliminar todas las formas de discriminación e intolerancia, en su resolución 72/130 de 8 de diciembre de 2018, declaró el 16 de mayo como Día Internacional de la Convivencia en Paz, enfatizando la importante función de la sociedad civil, especialmente del mundo académico, para el fomento del diálogo entre religiones y culturas y alentando a que se adopten medidas que movilicen a la sociedad civil, tales como la divulgación de la importancia de esta declaración, organización de actividades de diálogo o el establecimiento de marcos de cooperación. </p>
+                            <p>Al respecto, Crue Universidades Españolas reafirma su compromiso con la convivencia pacífica y el respeto mutuo con miras a promover la paz, la tolerancia, la inclusión, la comprensión y la solidaridad. Especialmente en las instituciones de educación superior, que no son sino espacios de diversidad, donde convergen personas con diferentes orígenes, culturas, creencias, perspectivas e ideologías. Es esta diversidad la que enriquece nuestro entorno académico y nos brinda la oportunidad de seguir aprendiendo y conviviendo.</p>
+                            <p>En este mundo, en el que el conflicto, la crispación y la confrontación son, lamentablemente, muy frecuentes, nuestras universidades han de ser faros de esperanza en la construcción de un mundo mejor. Debemos ser auténticos agentes de cambio, fomentando ambientes inclusivos en los que la docencia, la investigación, la transferencia y la innovación se desarrollen sobre la base del respeto, el diálogo y la comprensión. Ambientes en los que cada individuo se sienta valorado y respetado por lo que es, y en los que se rechace con firmeza cualquier forma de discriminación, odio o violencia. </p>    
+                            <p>La cooperación entre las distintas disciplinas de conocimiento, entre las ciencias y las humanidades, ha demostrado ser una fórmula exitosa para un progreso firme, sostenible, y más humano. Traslademos esa convivencia fructífera que alentamos desde nuestros campus al resto de la sociedad, demostrando que los valores que sustentan estas alianzas son efectivos a la hora de prevenir el conflicto o, cuando sea necesario, de repararlo. Renovemos hoy, por tanto, nuestro firme compromiso con un futuro de paz, convivencia y progreso en nuestras universidades, y en el mundo entero.</p>
+                            <footer class="text-end text-small border-top pt-2">Por Fran - 15/05/24</footer>
+                        </article>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <!-- Especificación 8: Footer (COMPLETADO)-->
+        <footer class="mt-auto text-left">
+            <nav>
+                <a href="#" class="text-light text-decoration-none ms-4 me-4">Copyright</a>
+                <a href="#" class="text-light text-decoration-none me-4">Mapa del sitio</a>
+                <a href="#" class="text-light text-decoration-none">FAQ</a>
+            </nav>
+        </footer>
+
+
+     </body>
+</html>
